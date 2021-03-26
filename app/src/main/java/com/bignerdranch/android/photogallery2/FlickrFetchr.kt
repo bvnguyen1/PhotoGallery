@@ -1,5 +1,6 @@
 package com.bignerdranch.android.photogallery
 
+import android.content.ContentValues
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Log
@@ -50,6 +51,14 @@ class FlickrFetchr {
         })
 
         return responseLiveData
+    }
+
+    @WorkerThread
+    fun fetchPhoto(url: String): Bitmap? {
+        val response: Response<ResponseBody> = flickrApi.fetchUrlBytes(url).execute()
+        val bitmap = response.body()?.byteStream()?.use(BitmapFactory::decodeStream)
+        Log.i(ContentValues.TAG, "Decoded bitmap=$bitmap from Response=$response")
+        return bitmap
     }
 }
 
