@@ -1,12 +1,12 @@
-package com.bignerdranch.android.photogallery2
+package com.bignerdranch.android.photogallery
 
 import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.os.Build
-import com.bignerdranch.android.photogallery.R
 
 const val NOTIFICATION_CHANNEL_ID = "flickr_poll"
+
 class PhotoGalleryApplication : Application() {
     override fun onCreate() {
         super.onCreate()
